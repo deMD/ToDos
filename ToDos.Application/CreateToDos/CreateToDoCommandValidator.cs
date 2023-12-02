@@ -2,7 +2,7 @@
 
 namespace ToDos.Application.CreateToDos;
 
-public class CreateToDoCommandValidator : AbstractValidator<CreateToDoCommand>
+internal sealed class CreateToDoCommandValidator : AbstractValidator<CreateToDoCommand>
 {
     public CreateToDoCommandValidator()
     {

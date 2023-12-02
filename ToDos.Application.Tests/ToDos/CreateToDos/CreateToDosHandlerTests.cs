@@ -4,7 +4,7 @@ using ToDos.Application.CreateToDos;
 
 namespace ToDos.Application.Tests.ToDos.CreateToDos;
 
-public class CreateToDosTests
+public class CreateToDosHandlerTests
 {
     [Fact]
     public async Task ItShouldCreateAToDo()

@@ -14,5 +14,3 @@ public class CreateToDosHandler
             : new ToDoDto(toDo.Title, toDo.Description, toDo.IsCompleted);
     }
 }
-
-public record ToDoDto(string Title, string Description, bool IsCompleted);
