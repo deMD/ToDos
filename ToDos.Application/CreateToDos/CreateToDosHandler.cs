@@ -20,9 +20,8 @@ public class CreateToDosHandler
             return new Result<ToDoDto>(new ValidationException("Todo could not be validated.",
                 validationResult.Errors));
 
-        var saveResult = await _createToDoService.SaveToDoAsync(command.ToToDo());
-        return saveResult.Match(
-            x => x.ToToDoDto(),
-            ex => new Result<ToDoDto>(ex));
+        var toDo = command.ToToDo();
+        await _createToDoService.SaveToDoAsync(toDo);
+        return toDo.ToToDoDto();
     }
 }

@@ -1,5 +1,8 @@
-﻿using FluentAssertions;
+﻿using System.Text.Json;
+using FluentAssertions;
+using LanguageExt;
 using ToDos.Application.CreateToDos;
+using Xunit.Abstractions;
 
 namespace ToDos.Application.Tests.ToDos.CreateToDos;
 
@@ -13,13 +16,21 @@ public class CreateToDoServiceTests
         var sut = new CreateToDoService();
 
         var result = await sut.SaveToDoAsync(toDo);
-        result.IsSuccess.Should().BeTrue();
-        result.IfSucc(x =>
-        {
-            x.Id.Should().BePositive();
-            x.Title.Should().Be(toDo.Title);
-            x.Description.Should().Be(toDo.Description);
-            x.IsCompleted.Should().Be(toDo.IsCompleted);
-        });
+        result.Should().Be(Unit.Default);
+        toDo.Id.Should().BePositive();
+        
+    }
+
+    [Fact]
+    public async Task ItTracksOutput()
+    {
+        var toDo = new ToDo("Test", "Test description", false);
+
+        var sut = new CreateToDoService();
+        var output = sut.TrackOutput();
+        await sut.SaveToDoAsync(toDo);
+
+        output.Data().Should().NotBeEmpty();
+        output.Data().First().Should().BeEquivalentTo(JsonSerializer.Serialize(toDo));
     }
 }

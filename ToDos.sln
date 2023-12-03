@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDos.Application", "ToDos.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDos.Application.Tests", "ToDos.Application.Tests\ToDos.Application.Tests.csproj", "{75F05F8E-FB6F-4938-83A3-10617C59C1D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDos.Common", "ToDos.Common\ToDos.Common.csproj", "{BB63064A-22B8-4930-9BE8-B2A41C76A039}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{75F05F8E-FB6F-4938-83A3-10617C59C1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F05F8E-FB6F-4938-83A3-10617C59C1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F05F8E-FB6F-4938-83A3-10617C59C1D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB63064A-22B8-4930-9BE8-B2A41C76A039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB63064A-22B8-4930-9BE8-B2A41C76A039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB63064A-22B8-4930-9BE8-B2A41C76A039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB63064A-22B8-4930-9BE8-B2A41C76A039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

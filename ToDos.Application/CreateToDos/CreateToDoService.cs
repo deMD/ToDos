@@ -1,11 +1,15 @@
 ﻿using System.Text.Json;
+using LanguageExt;
 using LanguageExt.Common;
+using ToDos.Common;
 
 namespace ToDos.Application.CreateToDos;
 
 public class CreateToDoService
 {
-    public async Task<Result<ToDo>> SaveToDoAsync(ToDo toDo)
+    private readonly OutputListener<string> _outputListener = new();
+    
+    public async Task<Unit> SaveToDoAsync(ToDo toDo)
     {
         var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "ToDos");
@@ -16,8 +20,15 @@ public class CreateToDoService
         toDo.SetId(files.Length + 1);
 
         var filePath = Path.Combine(directory, $"{toDo.Id}.json");
-        await File.WriteAllTextAsync(filePath, JsonSerializer.Serialize(toDo));
+        var contents = JsonSerializer.Serialize(toDo);
+        await File.WriteAllTextAsync(filePath, contents);
+        _outputListener.Track(contents);
 
-        return toDo;
+        return Unit.Default;
+    }
+
+    public OutputTracker<string> TrackOutput()
+    {
+        return _outputListener.CreateTracker();
     }
 }
