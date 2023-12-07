@@ -83,7 +83,7 @@ public class CreateToDosHandlerTests
 
     private static CreateToDosHandler GetCreateToDosHandler()
     {
-        var sut = new CreateToDosHandler(new CreateToDoService());
+        var sut = new CreateToDosHandler(new CreateToDoService("createTodos"));
         return sut;
     }
 }

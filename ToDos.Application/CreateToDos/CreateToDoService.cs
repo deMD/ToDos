@@ -1,18 +1,18 @@
 ﻿using System.Text.Json;
 using LanguageExt;
-using LanguageExt.Common;
 using ToDos.Common;
 
 namespace ToDos.Application.CreateToDos;
 
-public class CreateToDoService
+public class CreateToDoService(string saveDirectory)
 {
     private readonly OutputListener<string> _outputListener = new();
-    
+
     public async Task<Unit> SaveToDoAsync(ToDo toDo)
     {
+        
         var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "ToDos");
+            saveDirectory);
         if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
         var files = Directory.GetFiles(directory);

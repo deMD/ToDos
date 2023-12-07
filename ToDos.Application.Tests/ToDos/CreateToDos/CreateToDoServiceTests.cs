@@ -12,7 +12,7 @@ public class CreateToDoServiceTests
     {
         var toDo = new ToDo("Test", "Test description", false);
 
-        var sut = new CreateToDoService();
+        var sut = new CreateToDoService("createToDoServiceTests");
 
         var result = await sut.SaveToDoAsync(toDo);
         result.Should().Be(Unit.Default);
@@ -25,7 +25,7 @@ public class CreateToDoServiceTests
     {
         var toDo = new ToDo("Test", "Test description", false);
 
-        var sut = new CreateToDoService();
+        var sut = new CreateToDoService("createToDoServiceTests");
         var output = sut.TrackOutput();
         await sut.SaveToDoAsync(toDo);
 
